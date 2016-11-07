@@ -5,37 +5,65 @@ function main() {
 		height: 500,
 	});
 
-	var square = new fabric.Rect({
-		left: 100,
-		top: 100,
-		fill: 'blue',
-		width: 20,
-		height: 20,
-		angle: 45
-	});
+	function addSquare() {
+		var square = new fabric.Rect({
+			left: 100,
+			top: 100,
+			fill: 'red',
+			width: 20,
+			height: 20,
+			angle: 45
+		});
 
-	var circle = new fabric.Circle({
-	  radius: 20, fill: 'green', left: 100, top: 100
-	});
+		canvas.add(square);
+	}
 
-	var triangle = new fabric.Triangle({
-	  width: 20, height: 30, fill: 'blue', left: 50, top: 50
-	});
+	function addCircle() {
+		var circle = new fabric.Circle({
+		  radius: 20, fill: 'green', left: 100, top: 100
+		});
+
+		canvas.add(circle);
+	}
+
+	function addSquare() {
+		var square = new fabric.Rect({
+			left: 100,
+			top: 100,
+			fill: 'red',
+			width: 20,
+			height: 20,
+			angle: 45
+		});
+
+		canvas.add(square);
+	}
+
+	function addTriangle() {
+		var triangle = new fabric.Triangle({
+			width: 20, height: 30, fill: 'blue', left: 50, top: 50
+		});
+
+		canvas.add(triangle);
+	}
+
 
 	var imgElement = document.getElementById('my-image');
-	
-	var mode = 'square';
+
+	var mode;
 
 	function changeMode(mode) {
 		switch(mode) {
 			case 'square':
-				canvas.add(square);
+				addSquare();
 				break;
 			case 'circle':
-				canvas.add(circle);
+				addCircle();
 				break;
 			case 'triangle':
-				canvas.add(triangle);
+				addTriangle();
+				break;
+			default:
 				break;
 		}
 	}
