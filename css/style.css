@@ -27,3 +27,7 @@
 img {
 	display: none;
 }
+
+.nav-pills>li>a {
+	border-radius: 0px !important;
+}

@@ -11,8 +11,7 @@ function main() {
 		fill: 'blue',
 		width: 20,
 		height: 20,
-		angle: 45,
-		selectable: false
+		angle: 45
 	});
 
 	var circle = new fabric.Circle({
@@ -24,7 +23,6 @@ function main() {
 	});
 
 	var imgElement = document.getElementById('my-image');
-
 	
 	var mode = 'square';
 
