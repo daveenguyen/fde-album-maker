@@ -4,6 +4,10 @@ function main() {
 
 	$('#toolbar li').click(function (event) {
 		mode = $(this).attr('mode');
+
+		$('#toolbar li.active').removeClass('active');
+		$(this).addClass('active');
+		
 		console.log(mode);
 	})
 
