@@ -34,6 +34,17 @@ function main() {
 		canvas.add(triangle);
 	}
 
+	function addText() {
+		var text = new fabric.Text('Hello world', {
+		left: 100,
+		top: 100,
+		fill: '#f55',
+		angle: 15
+	});
+
+		canvas.add(text);
+	}
+
 	function deleteSelected() {
 		if (canvas.getActiveGroup()) {
 			canvas.getActiveGroup().forEachObject(function(o) {
@@ -60,6 +71,9 @@ function main() {
 				break;
 			case 'triangle':
 				addTriangle();
+				break;
+			case 'text':
+				addText();
 				break;
 			case 'delete':
 				deleteSelected();
