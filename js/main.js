@@ -26,19 +26,6 @@ function main() {
 		canvas.add(circle);
 	}
 
-	function addSquare() {
-		var square = new fabric.Rect({
-			left: 100,
-			top: 100,
-			fill: 'red',
-			width: 20,
-			height: 20,
-			angle: 45
-		});
-
-		canvas.add(square);
-	}
-
 	function addTriangle() {
 		var triangle = new fabric.Triangle({
 			width: 20, height: 30, fill: 'blue', left: 50, top: 50
@@ -48,13 +35,13 @@ function main() {
 	}
 
 	function deleteSelected() {
-		if (canvas.getActiveGroup() !== null) {
+		if (canvas.getActiveGroup()) {
 			canvas.getActiveGroup().forEachObject(function(o) {
 				o.remove();
 			});
 			canvas.discardActiveGroup();
 			canvas.renderAll();
-		} else if (canvas.getActiveObject() !== null) {
+		} else if (canvas.getActiveObject()) {
 			canvas.getActiveObject().remove();
 			canvas.renderAll();
 		}
@@ -62,8 +49,6 @@ function main() {
 
 
 	var imgElement = document.getElementById('my-image');
-
-	var mode;
 
 	function changeMode(mode) {
 		switch(mode) {
@@ -84,16 +69,17 @@ function main() {
 		}
 	}
 
-	$('#toolbar li').click(function (event) {
-		mode = $(this).attr('mode');
+	$('#toolbar li').click(function (e) {
+		e.preventDefault();
 
 		$('#toolbar li.active').removeClass('active');
 		$(this).addClass('active');
+
+		var mode = $(this).attr('mode');
 		changeMode(mode);
 	})
-	
+
 	canvas.renderAll();
 }
-
 
 $(document).ready(main);
