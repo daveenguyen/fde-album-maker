@@ -7,17 +7,16 @@
 </head>
 <body>
 	<main>
-		<nav id="toolbar">
-			<ul class="nav nav-pills">
-				<li role="presentation" class="active"><a href="#">Mode 1</a></li>
-				<li role="presentation"><a href="#">Mode 2</a></li>
-				<li role="presentation"><a href="#">Mode 3</a></li>
-			</ul>
-		</nav>
+		<ul id="toolbar" class="nav nav-pills">
+			<li role="presentation" class="active" mode="square"><a href="#">Square</a></li>
+			<li role="presentation" mode="circle"><a href="#">Circle</a></li>
+			<li role="presentation" mode="triangle"><a href="#">Triangle</a></li>
+		</ul>
+
 		<div id="wrapper">
 			<div id="canvas-wrapper">
 				<canvas id="canvas"></canvas>
-				<img src="img.png" id="my-image">
+				<img src="img/img.png" id="my-image">
 			</div>
 		</div>
 	</main>

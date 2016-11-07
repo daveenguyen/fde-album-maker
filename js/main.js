@@ -1,4 +1,12 @@
 function main() {
+
+	var mode = 'square';
+
+	$('#toolbar li').click(function (event) {
+		mode = $(this).attr('mode');
+		console.log(mode);
+	})
+
 	var canvas = new fabric.Canvas('canvas', {
 		width: 500,
 		height: 500,
