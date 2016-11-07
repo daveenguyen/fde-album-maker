@@ -47,6 +47,19 @@ function main() {
 		canvas.add(triangle);
 	}
 
+	function deleteSelected() {
+		if (canvas.getActiveGroup() !== null) {
+			canvas.getActiveGroup().forEachObject(function(o) {
+				o.remove();
+			});
+			canvas.discardActiveGroup();
+			canvas.renderAll();
+		} else if (canvas.getActiveObject() !== null) {
+			canvas.getActiveObject().remove();
+			canvas.renderAll();
+		}
+	}
+
 
 	var imgElement = document.getElementById('my-image');
 
@@ -62,6 +75,9 @@ function main() {
 				break;
 			case 'triangle':
 				addTriangle();
+				break;
+			case 'delete':
+				deleteSelected();
 				break;
 			default:
 				break;
