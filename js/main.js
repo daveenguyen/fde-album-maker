@@ -1,22 +1,11 @@
 function main() {
 
-	var mode = 'square';
-
-	$('#toolbar li').click(function (event) {
-		mode = $(this).attr('mode');
-
-		$('#toolbar li.active').removeClass('active');
-		$(this).addClass('active');
-		
-		console.log(mode);
-	})
-
 	var canvas = new fabric.Canvas('canvas', {
 		width: 500,
 		height: 500,
 	});
 
-	var rect = new fabric.Rect({
+	var square = new fabric.Rect({
 		left: 100,
 		top: 100,
 		fill: 'blue',
@@ -35,22 +24,32 @@ function main() {
 	});
 
 	var imgElement = document.getElementById('my-image');
-	imgElement
-		.addEventListener('load', function() {
 
-			var imgInstance = new fabric.Image(imgElement, {
-			  left: 10,
-			  top: 10,
-			  angle: 30,
-			  opacity: 0.85
-			});
-			canvas.add(imgInstance);
+	
+	var mode = 'square';
 
-		 }, false);
+	function changeMode(mode) {
+		switch(mode) {
+			case 'square':
+				canvas.add(square);
+				break;
+			case 'circle':
+				canvas.add(circle);
+				break;
+			case 'triangle':
+				canvas.add(triangle);
+				break;
+		}
+	}
+
+	$('#toolbar li').click(function (event) {
+		mode = $(this).attr('mode');
+
+		$('#toolbar li.active').removeClass('active');
+		$(this).addClass('active');
+		changeMode(mode);
+	})
 	
-	
-	canvas.add(circle, triangle);
-	canvas.add(rect);
 	canvas.renderAll();
 }
 
