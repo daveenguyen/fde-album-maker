@@ -67,58 +67,6 @@ function main() {
 			canvas.renderAll();
 		} else if (canvas.getActiveObject()) {
 			canvas.getActiveObject().remove();
-			canvas.renderAll();
-		}
-	}
-
-	function moveToFront() {
-		if (canvas.getActiveGroup()) {
-			canvas.getActiveGroup().forEachObject(function(o) {
-				canvas.bringToFront(o);
-				canvas.renderAll();
-			});
-			canvas.renderAll();
-		} else if (canvas.getActiveObject()) {
-			canvas.bringToFront(canvas.getActiveObject());
-			canvas.renderAll();
-		}
-	}
-
-	function moveForward() {
-		if (canvas.getActiveGroup()) {
-			canvas.getActiveGroup().forEachObject(function(o) {
-				canvas.bringForward(o);
-				canvas.renderAll();
-			});
-			canvas.renderAll();
-		} else if (canvas.getActiveObject()) {
-			canvas.bringForward(canvas.getActiveObject());
-			canvas.renderAll();
-		}
-	}
-
-	function moveBackwards() {
-		if (canvas.getActiveGroup()) {
-			canvas.getActiveGroup().forEachObject(function(o) {
-				canvas.sendBackwards(o);
-				canvas.renderAll();
-			});
-			canvas.renderAll();
-		} else if (canvas.getActiveObject()) {
-			canvas.sendBackwards(canvas.getActiveObject());
-			canvas.renderAll();
-		}
-	}
-	function moveToBack() {
-		if (canvas.getActiveGroup()) {
-			canvas.getActiveGroup().forEachObject(function(o) {
-				canvas.sendToBack(o);
-				canvas.renderAll();
-			});
-			canvas.renderAll();
-		} else if (canvas.getActiveObject()) {
-			canvas.sendToBack(canvas.getActiveObject());
-			canvas.renderAll();
 		}
 	}
 
@@ -161,22 +109,56 @@ function main() {
 		}
 	}
 
+	function changeObjectLayer(direction) {
+		var changeLayer = function(obj) {
+			switch (direction) {
+				case 'front':
+					canvas.bringToFront(obj);
+					break;
+				case 'forward':
+					canvas.bringForward(obj);
+					break;
+				case 'back':
+					canvas.sendToBack(obj);
+					break;
+				case 'backwards':
+					canvas.sendBackwards(obj);
+					break;
+				default:
+					canvas.bringToFront(obj);
+					break;
+			}
+		}
+
+		if (canvas.getActiveGroup()) {
+			canvas.getActiveGroup().forEachObject(function(o) {
+				changeLayer(o);
+				canvas.discardActiveGroup();
+			});
+			canvas.renderAll();
+		} else if (canvas.getActiveObject()) {
+			changeLayer(canvas.getActiveObject());
+			canvas.discardActiveObject();
+			canvas.renderAll();
+		}
+	}
+
 	function performAction(action) {
 		switch(action) {
 			case 'delete':
 				deleteSelected();
 				break;
 			case 'front':
-				moveToFront();
+				changeObjectLayer('front');
 				break;
 			case 'forward':
-				moveForward();
+				changeObjectLayer('forward');
 				break;
 			case 'backwards':
-				moveBackwards();
+				changeObjectLayer('backwards');
 				break;
 			case 'back':
-				moveToBack();
+				changeObjectLayer('back');
 				break;
 			default:
 				break;
@@ -234,8 +216,6 @@ function main() {
 		var action = $(this).attr('action');
 		performAction(action);
 	});
-
-	canvas.renderAll();
 }
 
 $(document).ready(main);
