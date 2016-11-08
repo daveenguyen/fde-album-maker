@@ -9,11 +9,12 @@
 	<main>
 		<nav id="toolbar" class="" role="navigation">
 			<ul class="nav nav-pills navbar-left">
-				<li role="presentation" mode="square"><a href="#">Square</a></li>
-				<li role="presentation" mode="circle"><a href="#">Circle</a></li>
-				<li role="presentation" mode="triangle"><a href="#">Triangle</a></li>
-				<li role="presentation" mode="text"><a href="#">Text</a></li>
-				<li role="presentation" mode="image"><a href="#">Image</a></li>
+				<li role="presentation" mode="square"><a href="#"><span class="glyphicon glyphicon-stop" aria-hidden="true"></span></a></li>
+				<li role="presentation" mode="circle"><a href="#"><span class="glyphicon glyphicon-record" aria-hidden="true"></span></a></li>
+				<li role="presentation" mode="triangle"><a href="#"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span></a></li>
+				<li role="presentation" mode="text"><a href="#"><span class="glyphicon glyphicon-text-background" aria-hidden="true"></span></a></li>
+				<li role="presentation" mode="image"><a href="#"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></a></li>
+				<li role="presentation" mode="vaporize"><a href="#"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span></a></li>
 			</ul>
 
 			<ul class="nav nav-pills navbar-right">
@@ -24,11 +25,12 @@
 				<li role="presentation" action="delete"><a href="#">Delete</a></li>
 			</ul>
 		</nav>
+		<div id="text-toolbar">
+			URL/Text: <input id="obj-text" type="text">
+			Color: <input id="obj-color" type="color">
+		</div>
 
 		<div id="wrapper">
-			<div>
-				URL/Text: <input id="obj-text" type="text"> Color: <input id="obj-color" type="color">
-			</div>
 			<div id="canvas-wrapper">
 				<canvas id="canvas"></canvas>
 			</div>

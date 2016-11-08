@@ -122,7 +122,19 @@ function main() {
 		}
 	}
 
+	var vaporlinks = [
+		'http://i.imgur.com/lTO9Plf.png',
+		'https://levels.io/wp-content/uploads/2015/10/tumblr_nv2cqhOJPL1ufh7yno1_1280.png',
+		'https://levels.io/wp-content/uploads/2015/10/tumblr_nv2cqhOJPL1ufh7yno1_1280.png',
+		'http://www.imgbase.info/images/safe-wallpapers/digital_art/1_miscellaneous_digital_art/55905_1_miscellaneous_digital_art_vaporwave.jpg',
+		'http://neologisms.blogs.wm.edu/files/2016/03/vaporwave-1.jpg',
+		'https://levels.io/wp-content/uploads/2015/10/374ff939767463b4a196cdc217d042dd.jpg'
+	];
 
+	function addVaporwaveBg() {
+		var imgUrl = vaporlinks[Math.floor(Math.random()*vaporlinks.length)];
+		addImage(imgUrl);
+	}
 
 	function changeMode(mode) {
 		switch(mode) {
@@ -140,6 +152,9 @@ function main() {
 				break;
 			case 'image':
 				addImage('./img/img.png');
+				break;
+			case 'vaporize':
+				addVaporwaveBg();
 				break;
 			default:
 				break;
