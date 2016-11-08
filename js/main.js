@@ -10,28 +10,28 @@ function main() {
 		switch (shape) {
 			case 'square':
 				shapeObj = new fabric.Rect({
-					width: 20,
-					height: 20,
+					width: 100,
+					height: 100,
 					fill: 'red'
 				});
 				break;
 			case 'circle':
 				shapeObj = new fabric.Circle({
-					radius: 10,
+					radius: 100,
 					fill: 'green'
 				});
 				break;
 			case 'triangle':
 				shapeObj = new fabric.Triangle({
-					width: 20,
-					height: 20,
+					width: 100,
+					height: 100,
 					fill: 'blue'
 				});
 				break;
 			default:
 				shapeObj = new fabric.Rect({
-					width: 20,
-					height: 20,
+					width: 100,
+					height: 100,
 					fill: 'red'
 				});
 				break;
@@ -204,7 +204,7 @@ function main() {
 	$('#obj-text').keyup(function (e) {
 		$(this).change();
 	})
-	
+
 	$('#obj-color').change(function (e) {
 		if (canvas.getActiveObject()) {
 			var selectedObj = canvas.getActiveObject();
