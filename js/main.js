@@ -42,8 +42,7 @@ function main() {
 		canvas.add(text);
 	}
 
-	function addImage() {
-		var url = './img/img.png';
+	function addImage(url) {
 		fabric.Image.fromURL(url, function(oImg) {
 			oImg.scaleToHeight(canvas.getHeight());
 			canvas.add(oImg);
@@ -131,7 +130,7 @@ function main() {
 				addText();
 				break;
 			case 'image':
-				addImage();
+				addImage('./img/img.png');
 				break;
 			default:
 				break;
@@ -168,6 +167,8 @@ function main() {
 
 			if (selectedObj.get('type') === 'text') {
 				$('#obj-text').val(selectedObj.getText());
+			} else if(selectedObj.get('type') === 'image') {
+				$('#obj-text').val('');
 			}
 		}
 	})
@@ -175,15 +176,19 @@ function main() {
 	$('#obj-text').change(function (e) {
 		if (canvas.getActiveObject().get('type') === 'text') {
 			var selectedObj = canvas.getActiveObject();
-			selectedObj.set('text', this.value);
+			selectedObj.set('text', $(this).val());
 			canvas.renderAll();
+		} else if (canvas.getActiveObject().get('type') === 'image') {
+			var selectedObj = canvas.getActiveObject();
+			selectedObj.remove();
+			addImage($(this).val());
 		}
 	})
 
 	$('#obj-color').change(function (e) {
 		if (canvas.getActiveObject()) {
 			var selectedObj = canvas.getActiveObject();
-			var color = this.value;
+			var color = $(this).val();
 			selectedObj.set('fill', color);
 			canvas.renderAll();
 		}
