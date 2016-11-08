@@ -163,6 +163,23 @@ function main() {
 		}
 	}
 
+	canvas.on('object:selected', function(e) {
+		var selectedObj = canvas.getActiveObject();
+		if (selectedObj) {
+			var color = '#' + new fabric.Color(selectedObj.getFill()).toHex();
+			$('#obj-color').val(color);
+		}
+	})
+
+	$('#obj-color').change(function (e) {
+		if (canvas.getActiveObject()) {
+			var selectedObj = canvas.getActiveObject();
+			var color = this.value;
+			selectedObj.set('fill', color);
+			canvas.renderAll();
+		}
+	})
+
 	$('.navbar-left li').click(function (e) {
 		e.preventDefault();
 
