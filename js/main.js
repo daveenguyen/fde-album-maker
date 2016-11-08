@@ -168,6 +168,18 @@ function main() {
 		if (selectedObj) {
 			var color = '#' + new fabric.Color(selectedObj.getFill()).toHex();
 			$('#obj-color').val(color);
+
+			if (selectedObj.get('type') === 'text') {
+				$('#obj-text').val(selectedObj.getText());
+			}
+		}
+	})
+
+	$('#obj-text').change(function (e) {
+		if (canvas.getActiveObject().get('type') === 'text') {
+			var selectedObj = canvas.getActiveObject();
+			selectedObj.set('text', this.value);
+			canvas.renderAll();
 		}
 	})
 
