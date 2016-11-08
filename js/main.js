@@ -5,33 +5,40 @@ function main() {
 		height: 500,
 	});
 
-	function addSquare() {
-		var square = new fabric.Rect({
-			width: 20,
-			height: 20,
-			fill: 'red'
-		});
+	function addShape(shape) {
+		var shapeObj;
+		switch (shape) {
+			case 'square':
+				shapeObj = new fabric.Rect({
+					width: 20,
+					height: 20,
+					fill: 'red'
+				});
+				break;
+			case 'circle':
+				shapeObj = new fabric.Circle({
+					radius: 10,
+					fill: 'green'
+				});
+				break;
+			case 'triangle':
+				shapeObj = new fabric.Triangle({
+					width: 20,
+					height: 20,
+					fill: 'blue'
+				});
+				break;
+			default:
+				shapeObj = new fabric.Rect({
+					width: 20,
+					height: 20,
+					fill: 'red'
+				});
+				break;
+		}
 
-		canvas.add(square);
-	}
-
-	function addCircle() {
-		var circle = new fabric.Circle({
-		  radius: 10,
-		  fill: 'green'
-		});
-
-		canvas.add(circle);
-	}
-
-	function addTriangle() {
-		var triangle = new fabric.Triangle({
-			width: 20,
-			height: 20,
-			fill: 'blue'
-		});
-
-		canvas.add(triangle);
+		canvas.add(shapeObj);
+		canvas.setActiveObject(shapeObj);
 	}
 
 	function addText() {
@@ -40,12 +47,14 @@ function main() {
 		});
 
 		canvas.add(text);
+		canvas.setActiveObject(text);
 	}
 
 	function addImage(url) {
 		fabric.Image.fromURL(url, function(oImg) {
 			oImg.scaleToHeight(canvas.getHeight());
 			canvas.add(oImg);
+			canvas.setActiveObject(oImg);
 		});
 	}
 
@@ -118,13 +127,13 @@ function main() {
 	function changeMode(mode) {
 		switch(mode) {
 			case 'square':
-				addSquare();
+				addShape('square');
 				break;
 			case 'circle':
-				addCircle();
+				addShape('circle');
 				break;
 			case 'triangle':
-				addTriangle();
+				addShape('triangle');
 				break;
 			case 'text':
 				addText();
