@@ -36,13 +36,21 @@ function main() {
 
 	function addText() {
 		var text = new fabric.Text('Hello world', {
-		left: 100,
-		top: 100,
-		fill: '#f55',
-		angle: 15
-	});
+			left: 100,
+			top: 100,
+			fill: '#f55',
+			angle: 15
+		});
 
 		canvas.add(text);
+	}
+
+	function addImage() {
+		var url = './img/img.png';
+		fabric.Image.fromURL(url, function(oImg) {
+			oImg.scaleToHeight(canvas.getHeight());
+			canvas.add(oImg);
+		});
 	}
 
 	function deleteSelected() {
@@ -58,9 +66,6 @@ function main() {
 		}
 	}
 
-
-	var imgElement = document.getElementById('my-image');
-
 	function changeMode(mode) {
 		switch(mode) {
 			case 'square':
@@ -75,6 +80,16 @@ function main() {
 			case 'text':
 				addText();
 				break;
+			case 'image':
+				addImage();
+				break;
+			default:
+				break;
+		}
+	}
+
+	function performAction(action) {
+		switch(action) {
 			case 'delete':
 				deleteSelected();
 				break;
@@ -83,15 +98,22 @@ function main() {
 		}
 	}
 
-	$('#toolbar li').click(function (e) {
+	$('.navbar-left li').click(function (e) {
 		e.preventDefault();
 
-		$('#toolbar li.active').removeClass('active');
+		$('.navbar-left li.active').removeClass('active');
 		$(this).addClass('active');
 
 		var mode = $(this).attr('mode');
 		changeMode(mode);
-	})
+	});
+
+	$('.navbar-right li').click(function (e) {
+		e.preventDefault();
+
+		var action = $(this).attr('action');
+		performAction(action);
+	});
 
 	canvas.renderAll();
 }

@@ -7,18 +7,23 @@
 </head>
 <body>
 	<main>
-		<ul id="toolbar" class="nav nav-pills">
-			<li role="presentation" mode="square"><a href="#">Square</a></li>
-			<li role="presentation" mode="circle"><a href="#">Circle</a></li>
-			<li role="presentation" mode="triangle"><a href="#">Triangle</a></li>
-			<li role="presentation" mode="text"><a href="#">Text</a></li>
-			<li role="presentation" mode="delete"><a href="#">Delete</a></li>
-		</ul>
+		<nav id="toolbar" class="" role="navigation">
+			<ul class="nav nav-pills navbar-left">
+				<li role="presentation" mode="square"><a href="#">Square</a></li>
+				<li role="presentation" mode="circle"><a href="#">Circle</a></li>
+				<li role="presentation" mode="triangle"><a href="#">Triangle</a></li>
+				<li role="presentation" mode="text"><a href="#">Text</a></li>
+				<li role="presentation" mode="image"><a href="#">Image</a></li>
+			</ul>
+
+			<ul class="nav nav-pills navbar-right">
+				<li role="presentation" action="delete"><a href="#">Delete</a></li>
+			</ul>
+		</nav>
 
 		<div id="wrapper">
 			<div id="canvas-wrapper">
 				<canvas id="canvas"></canvas>
-				<img src="img/img.png" id="my-image">
 			</div>
 		</div>
 	</main>

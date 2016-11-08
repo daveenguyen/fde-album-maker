@@ -31,3 +31,7 @@ img {
 .nav-pills>li>a {
 	border-radius: 0px !important;
 }
+
+.navbar-right {
+	margin-right: 0 !important;
+}
