@@ -171,10 +171,20 @@ function main() {
 			var color = '#' + new fabric.Color(selectedObj.getFill()).toHex();
 			$('#obj-color').val(color);
 
-			if (selectedObj.get('type') === 'text') {
-				$('#obj-text').val(selectedObj.getText());
-			} else if(selectedObj.get('type') === 'image') {
-				$('#obj-text').val('');
+			switch(selectedObj.get('type')) {
+				case 'text':
+					$('#input-label').text('Text');
+					if ($('#input-wrapper').hasClass('invisible')) $('#input-wrapper').removeClass('invisible');
+					$('#obj-text').val(selectedObj.getText());
+					break;
+				case 'image':
+					$('#input-label').text('URL');
+					if ($('#input-wrapper').hasClass('invisible')) $('#input-wrapper').removeClass('invisible');
+					$('#obj-text').val('');
+					break;
+				default:
+					if (!$('#input-wrapper').hasClass('invisible')) $('#input-wrapper').addClass('invisible');
+					break;
 			}
 		}
 	})
@@ -191,6 +201,10 @@ function main() {
 		}
 	})
 
+	$('#obj-text').keyup(function (e) {
+		$(this).change();
+	})
+	
 	$('#obj-color').change(function (e) {
 		if (canvas.getActiveObject()) {
 			var selectedObj = canvas.getActiveObject();

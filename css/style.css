@@ -1,3 +1,6 @@
+.invisible {
+	opacity: 0;
+}
 #toolbar {
 	height: 40px;
 	background:#333;
