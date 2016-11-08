@@ -7,12 +7,9 @@ function main() {
 
 	function addSquare() {
 		var square = new fabric.Rect({
-			left: 100,
-			top: 100,
-			fill: 'red',
 			width: 20,
 			height: 20,
-			angle: 45
+			fill: 'red'
 		});
 
 		canvas.add(square);
@@ -20,7 +17,8 @@ function main() {
 
 	function addCircle() {
 		var circle = new fabric.Circle({
-		  radius: 20, fill: 'green', left: 100, top: 100
+		  radius: 10,
+		  fill: 'green'
 		});
 
 		canvas.add(circle);
@@ -28,7 +26,9 @@ function main() {
 
 	function addTriangle() {
 		var triangle = new fabric.Triangle({
-			width: 20, height: 30, fill: 'blue', left: 50, top: 50
+			width: 20,
+			height: 20,
+			fill: 'blue'
 		});
 
 		canvas.add(triangle);
@@ -36,10 +36,7 @@ function main() {
 
 	function addText() {
 		var text = new fabric.Text('Hello world', {
-			left: 100,
-			top: 100,
-			fill: '#f55',
-			angle: 15
+			fill: '#f55'
 		});
 
 		canvas.add(text);
