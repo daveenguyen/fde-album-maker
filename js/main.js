@@ -66,6 +66,59 @@ function main() {
 		}
 	}
 
+	function moveToFront() {
+		if (canvas.getActiveGroup()) {
+			canvas.getActiveGroup().forEachObject(function(o) {
+				canvas.bringToFront(o);
+				canvas.renderAll();
+			});
+			canvas.renderAll();
+		} else if (canvas.getActiveObject()) {
+			canvas.bringToFront(canvas.getActiveObject());
+			canvas.renderAll();
+		}
+	}
+
+	function moveForward() {
+		if (canvas.getActiveGroup()) {
+			canvas.getActiveGroup().forEachObject(function(o) {
+				canvas.bringForward(o);
+				canvas.renderAll();
+			});
+			canvas.renderAll();
+		} else if (canvas.getActiveObject()) {
+			canvas.bringForward(canvas.getActiveObject());
+			canvas.renderAll();
+		}
+	}
+
+	function moveBackwards() {
+		if (canvas.getActiveGroup()) {
+			canvas.getActiveGroup().forEachObject(function(o) {
+				canvas.sendBackwards(o);
+				canvas.renderAll();
+			});
+			canvas.renderAll();
+		} else if (canvas.getActiveObject()) {
+			canvas.sendBackwards(canvas.getActiveObject());
+			canvas.renderAll();
+		}
+	}
+	function moveToBack() {
+		if (canvas.getActiveGroup()) {
+			canvas.getActiveGroup().forEachObject(function(o) {
+				canvas.sendToBack(o);
+				canvas.renderAll();
+			});
+			canvas.renderAll();
+		} else if (canvas.getActiveObject()) {
+			canvas.sendToBack(canvas.getActiveObject());
+			canvas.renderAll();
+		}
+	}
+
+
+
 	function changeMode(mode) {
 		switch(mode) {
 			case 'square':
@@ -92,6 +145,18 @@ function main() {
 		switch(action) {
 			case 'delete':
 				deleteSelected();
+				break;
+			case 'front':
+				moveToFront();
+				break;
+			case 'forward':
+				moveForward();
+				break;
+			case 'backwards':
+				moveBackwards();
+				break;
+			case 'back':
+				moveToBack();
 				break;
 			default:
 				break;
